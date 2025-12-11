@@ -1,4 +1,6 @@
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * CerealRunner2 - CSV File Parser
@@ -31,7 +33,7 @@ public class CerealRunner2 {
      * 7. Handle FileNotFoundException with try-catch
      */
     public CerealRunner2() {
-        cereals = new ArrayList<>();
+        cereals = new ArrayList<>(); // init instance var
 
         try {
             File cerealFile = new File("cerealSubset.csv");
@@ -40,24 +42,24 @@ public class CerealRunner2 {
                 if (!fileScanner.hasNextLine()){
                     fileScanner.close();
                     System.out.println("Loaded "+cereals.size()+" cereals.\n");
+                    break;
                 }
-                //more stuff converts data into list
+                //parse + add to collection
                 String theNextLine = fileScanner.nextLine();
                 String[] splitData = theNextLine.split(",");
                 String name = splitData[0];
                 int calories = Integer.parseInt(splitData[1]);
                 int fiber = Integer.parseInt(splitData[2]);
                 int carbohydrates = Integer.parseInt(splitData[3]);
-                double cups = Integer.parseInt(splitData[4]);
+                double cups = Double.parseDouble(splitData[4]);
                 //make list
                 cereals.add(new Cereal(name, calories, fiber, carbohydrates, cups));
             }
         }
         catch (Exception e) {
-            System.out.println("OOPS!");
+            //catch all exceptions = lazy
+            System.out.println("ERROR: " + e);
         }
-
-
 
     }
 
@@ -65,7 +67,7 @@ public class CerealRunner2 {
      * Getter method for the cereals ArrayList
      */
     public ArrayList<Cereal> getCereals() {
-        return null;  // Fix this
+        return cereals;  // Fix this
     }
 
     /**
@@ -73,7 +75,7 @@ public class CerealRunner2 {
      */
     public static void main(String[] args) {
         // Create a CerealRunner2 object
-
+        CerealRunner2 theInstanceOfThisFile = new CerealRunner2();
 
         // Print the number of records created
         // Should output: "76 records created."

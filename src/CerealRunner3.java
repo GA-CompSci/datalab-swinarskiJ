@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import javax.naming.spi.DirStateFactory;
 
 /**
  * CerealRunner3 - Data Analysis Methods
@@ -32,11 +33,13 @@ public class CerealRunner3 {
      * @return ArrayList of cereals meeting criteria
      */
     public static ArrayList<Cereal> filterCarbsPerCup(int min, int max) {
-
-
-
-
-        return null;  // Replace with your code
+        cereals = new ArrayList<>();
+        
+        for (Cereal c : cereals){
+            return null;
+        }
+        
+        // Replace with your code
     }
 
     /**

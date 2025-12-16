@@ -39,7 +39,7 @@ public class Cereal {
     // getCalories() - returns int
     public int getCalories() { return calories; }
     // getFiber() - returns int
-    public int getfiber() { return fiber; }
+    public int getFiber() { return fiber; }
     // getCarbohydrates() - returns int
     public int getCarbohydrates() { return carbohydrates; }
     // getCups() - returns double

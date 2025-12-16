@@ -1,8 +1,7 @@
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import javax.naming.spi.DirStateFactory;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * CerealRunner3 - Data Analysis Methods
@@ -33,13 +32,17 @@ public class CerealRunner3 {
      * @return ArrayList of cereals meeting criteria
      */
     public static ArrayList<Cereal> filterCarbsPerCup(int min, int max) {
-        cereals = new ArrayList<>();
+        ArrayList<Cereal> filtered = new ArrayList<>();
         
-        for (Cereal c : cereals){
-            return null;
+        for (Cereal cereal : cereals){
+            double carbsPerCup = cereal.getCarbohydrates() / cereal.getCups();
+            if (carbsPerCup >= min && carbsPerCup <= max){
+                filtered.add(cereal);
+            }
         }
+
+        return filtered;
         
-        // Replace with your code
     }
 
     /**
@@ -60,11 +63,24 @@ public class CerealRunner3 {
      * @return Cereal with highest fiber percentage, or null if empty
      */
     public static Cereal highestPercentFiber() {
+        if(cereals.size() == 0){
+            return null;
+        }
+
+        Cereal bestC = cereals.get(0);
+        double percentB = bestC.getFiber() / bestC.getCalories();
+
+        for(int i = 1; i< cereals.size(); i++){
+            Cereal currentC = cereals.get(i);
+            double percentC = currentC.getFiber() / currentC.getCalories();
+
+
+            if(percentC > percentB) bestC = currentC;
+        }
 
 
 
-
-        return null;  // Replace with your code
+        return bestC;
     }
 
     /**
@@ -77,9 +93,8 @@ public class CerealRunner3 {
      */
     public static double findNetCarbs(Cereal c) {
 
+        return c.getCarbohydrates() - c.getFiber();
 
-
-        return 0;  // Replace with your code
     }
 
     // ========================================================================
